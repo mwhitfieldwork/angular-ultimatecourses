@@ -16,7 +16,12 @@ import 'rxjs/add/operator/pluck';
   `
 })
 export class MailFolderComponent {
-  messages: Observable<Mail[]> = this.route.data.pluck('messages');
+  //8.  The data is being created at the end and the component is being loaded with the data
+  //9. the url is probably triggered by a button which has a navigate method on it something like: 
+  //10. this.router.navigate(['localhost:4200/messages?folder=${folder}', 'name']);
+  //11. maybe the folder value comes off of the get for the db.json
+  //12. maybe the name comes off of the activated route snapshot
+  messages: Observable<Mail[]> = this.route.data.pluck('messages'); //13. we can grab a property from the data using pluck
   title: Observable<string> = this.route.params.pluck('name');
   constructor(private route: ActivatedRoute) {}
 }

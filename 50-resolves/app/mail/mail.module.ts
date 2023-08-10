@@ -11,10 +11,11 @@ import { MailService } from './mail.service';
 
 export const ROUTES: Routes = [
   {
-    path: 'folder/:name',
+    path: 'folder/:name', // 6. The name might be an alias for the value of the router param the is passed in from the service call to the endpoint
     component: MailFolderComponent,
     resolve: {
-      messages: MailFolderResolve
+      messages: MailFolderResolve //7. we want the respose of the mailfolder reseolve
+                                  // to be fuction against a property in the router, called messages
     }
   }
 ];
@@ -30,7 +31,7 @@ export const ROUTES: Routes = [
     MailItemComponent
   ],
   providers: [
-    MailService,
+    MailService, //import your service into the module
     MailFolderResolve
   ],
   exports: [
